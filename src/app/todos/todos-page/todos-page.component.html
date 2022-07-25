@@ -1,0 +1,21 @@
+<div class="todoapp">
+	<div class="header">
+	  <h1>todos</h1>
+	  <div></div>
+	  <input
+		class="new-todo"
+		placeholder="What needs to be done?"
+		autofocus
+		#input (keydown.enter)="add(input)"
+	  />
+	</div>
+	<div class="main">
+		<input id="toggle-all" class="toggle-all" type="checkbox">
+		<label for="toggle-all"></label>
+		<app-todos [todos]="todos$ | async" (delete)="delete($event)" (complete)="complete($event)"  ></app-todos>
+		<app-todos-filters 
+		(update)="changeFilter($event)" (delete)="delete($event)"  [filters]="filters" [active]="activeFilter$ | async"
+		>
+		</app-todos-filters>
+	</div>
+  </div>

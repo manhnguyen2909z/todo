@@ -103,5 +103,9 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2a7711d3-213a-416c-8720-cb1af5f0ed0f",
+    "defaultCollection": "@datorama/akita"
   }
 }
