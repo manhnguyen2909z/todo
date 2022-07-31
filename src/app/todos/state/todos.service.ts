@@ -15,21 +15,17 @@ export class TodosService {
       }
     });
   }
-
   complete({ id, completed }: Todo) {
     this.todosStore.update(id, { completed });
   }
-
   add(title: string) {
     if(title.trim() !==''){
       const todo = createTodo(title);
       this.todosStore.add(todo);
-
     }
-
   }
   delete(id: string) {
     this.todosStore.remove(id);
   }
-
+  
 }

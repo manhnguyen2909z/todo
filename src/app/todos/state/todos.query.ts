@@ -11,7 +11,6 @@ import { map } from 'rxjs/operators';
 })
 export class TodosQuery extends QueryEntity<TodosState> {
   selectVisibilityFilter$ = this.select(state => state.ui.filter);
-
   selectVisibleTodos$ = combineLatest(
     this.selectVisibilityFilter$,
     this.selectAll(),
@@ -22,7 +21,7 @@ export class TodosQuery extends QueryEntity<TodosState> {
     super(store);
   }
 
-  private getVisibleTodos(filter: any, todos: any[]): Todo[] {
+   getVisibleTodos(filter: VISIBILITY_FILTER, todos: any[]): Todo[] {
     switch (filter) {
       case VISIBILITY_FILTER.SHOW_COMPLETED:
         return todos.filter((t: { completed: any; }) => t.completed);
@@ -32,4 +31,5 @@ export class TodosQuery extends QueryEntity<TodosState> {
         return todos;
     }
   }
+  
 }

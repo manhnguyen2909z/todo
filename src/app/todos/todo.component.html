@@ -1,7 +1,7 @@
-<ul class="todo-list">
-  <li [ngClass]="todo.completed? 'completed' : ''">
+ <ul class="todo-list">
+  <li [ngClass]="check? 'completed' : ''" >
     <div class="view">
-    <input class="toggle" [ngModel]="todo.completed" [formControl]="control" type="checkbox" />
+    <input class="toggle"  (click)="checked()" [ngModel]="check"  [formControl]="control" type="checkbox" />
     <label>
       <span class="description">{{todo.title}}</span>
     </label>

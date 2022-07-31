@@ -11,17 +11,22 @@ import { NgModule } from '@angular/core';
   
 })
 export class TodoComponent implements OnInit {
-  @Input() todo:any| Todo;
+
+  @Input() todo:any|Todo;
+  @Input() count!:number
   @Output() complete = new EventEmitter<Todo>();
   @Output() delete = new EventEmitter<string>();
-
+  @Input() check = false;
+  @Output() checkCount = new EventEmitter();
+  checked(){
+   this.check =!this.check
+   this.checkCount.emit();
+  }
   control!: FormControl;
-
   ngOnInit():void {
     this.control = new FormControl(this.todo.completed);
-
     this.control.valueChanges.subscribe((completed: boolean) => {
-      this.complete.emit({ ...this.todo, completed });
+    this.complete.emit({ ...this.todo, completed });
     });
   }
 }

@@ -1,20 +1,14 @@
-<!-- <div class="footer">
-    <span class="todo-count">2 items left</span>
-    <ul class="filters">
-      <li *ngFor="let filter of filters;" >
-        <button  (click)="toggleTabs(filter)" [formControl]="control" (submit)="onSubmit()"  [ngClass]="filter.isActive ? 'selected' : ''"  >{{filter.label}}</button>
+<div class="footer">
+    <span class="todo-count">{{count}} items left</span>
+    <ul class="filters" >
+      <li *ngFor="let filter of filters;"  >
+        <button 
+         (click)="toggleTabs(filter)"
+          (click)="onCheck(filter.value)" 
+          [ngClass]="filter.isActive ? 'selected' : ''"  >
+          {{filter.label}}
+        </button>
       </li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
-</div> -->
-<div class="footer">
-  <span class="todo-count">items left</span>
-  <div>
-    <select [formControl]="control">
-      <option *ngFor="let filter of filters;" [ngValue]="filter.value">{{filter.label}}
-      </option>
-    </select>
-  </div>  
-  <button class="clear-completed">Clear completed</button>
-
+    <button class="clear-completed" (click)="clear()">Clear completed</button>
 </div>
