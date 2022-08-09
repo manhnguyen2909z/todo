@@ -1,7 +1,9 @@
  <ul class="todo-list">
-  <li [ngClass]="check? 'completed' : ''" >
+  <li [ngClass]="todo.completed? 'completed' : ''" >
     <div class="view">
-    <input class="toggle"  (click)="checked()" [ngModel]="check"  [formControl]="control" type="checkbox" />
+      <!-- da dung ngMOdel la khong dung formControl nua, dung 1 trong 2 thoi, sai r -->
+    <!-- <input class="toggle"  (click)="checked()" [ngModel]="check"  [formControl]="control" type="checkbox" /> -->
+    <input class="toggle" (click)="complete.emit(todo)" type="checkbox" [checked]="todo.completed" />
     <label>
       <span class="description">{{todo.title}}</span>
     </label>

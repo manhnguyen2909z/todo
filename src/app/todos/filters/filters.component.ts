@@ -34,7 +34,7 @@ interface TabHead {
     @Input() active: any|VISIBILITY_FILTER;
     @Input() filters!: TodoFilter[];
     @Output() update = new EventEmitter<VISIBILITY_FILTER>();
-    @Input() count !:number;
+    @Input() count!:number;
     control!: FormControl;  
     currentTab: any;
     
@@ -46,12 +46,8 @@ interface TabHead {
       this.todosService.updateFilter(filter) 
       }
     clear(){
-        this.todos.forEach((todo: { completed: boolean; id: string; }) =>{
-          if(todo.completed === true){
-            this.todosService.delete(todo.id)
-            this.count--;
-          } 
-        })
+      this.todosService.clearCompleted();
+      this.count = this.todosService.getCount();
       }
     toggleTabs(currentTab: TabHead) {
       this.currentTab = currentTab;

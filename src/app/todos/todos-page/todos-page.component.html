@@ -10,25 +10,24 @@
 	  />
 	</div>
 	<div class="main">
-		
+		<input id="toggle-all" (click)="toggleAll()" class="toggle-all" type="checkbox">
+		<label for="toggle-all"></label>
 		<app-todos  
 		 [todos]="todos$ | async" 
 		 (delete)="delete($event)" 
 		 (complete)="complete($event)"
-		 
-		
 		 >
-		 
 		</app-todos>
 		<app-todos-filters 
 		[todos]="todos$ | async" 
 		(update)="changeFilter($event)"
-		(delete)="delete($event)" 
+		(delete)="delete($event)"
 		[filters]="filters"
 		[active]="activeFilter$ | async"
 		[count]="count"
-		
 		>
 		</app-todos-filters>
 	</div>
   </div>
+
+  <pre> {{ todos$ | async | json }} </pre>

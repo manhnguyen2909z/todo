@@ -14,19 +14,17 @@ export class TodoComponent implements OnInit {
 
   @Input() todo:any|Todo;
   @Input() count!:number
+  // cai ben trong ngoac nhon la kieu du lieu ban ra
+  // ghi ro rang de tranh bi nham lan, gom ten thuoc tinh, va gia tri, nhu vay luc ghi ben html se ko bi nham
   @Output() complete = new EventEmitter<Todo>();
   @Output() delete = new EventEmitter<string>();
-  @Input() check = false;
-  @Output() checkCount = new EventEmitter();
-  checked(){
-   this.check =!this.check
-   this.checkCount.emit();
-  }
+
   control!: FormControl;
   ngOnInit():void {
-    this.control = new FormControl(this.todo.completed);
-    this.control.valueChanges.subscribe((completed: boolean) => {
-    this.complete.emit({ ...this.todo, completed });
-    });
+    // this.control = new FormControl(this.todo.completed);
+    // this.control.valueChanges.subscribe((completed: boolean) => {
+    // this.complete.emit({ ...this.todo, completed });
+    // });
+    // ?? dinh lam gi the?
   }
 }

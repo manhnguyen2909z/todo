@@ -4,7 +4,7 @@ import { Todo } from './todo.model';
 import { QueryEntity } from '@datorama/akita';
 import { combineLatest } from 'rxjs';
 import { VISIBILITY_FILTER } from '../filters/filter.model'; 
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,5 @@ export class TodosQuery extends QueryEntity<TodosState> {
         return todos;
     }
   }
-  
+ 
 }
